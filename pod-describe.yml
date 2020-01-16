@@ -1,0 +1,72 @@
+kubectl describe pods one-pod
+Name:         one-pod
+Namespace:    default
+Priority:     0
+Node:         kind-control-plane/172.17.0.3
+Start Time:   Tue, 03 Dec 2019 09:52:46 +0530
+Labels:       app=app-one
+              type=sample
+Annotations:  <none>
+Status:       Running
+IP:           10.244.0.7
+Containers:
+  nginx-container:
+    Container ID:   containerd://1a21a636e9f4372f6cc2bb3a70d20ddbae15eaad349fd31a341d2647277356eb
+    Image:          nginx
+    Image ID:       docker.io/library/nginx@sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 03 Dec 2019 09:52:50 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-85scf (ro)
+  ubuntu-container:
+    Container ID:   containerd://eebf794d66b5a466cc918e18d8948c3fcbcde855d70cb8184cbe68c8d4cd25a8
+    Image:          ubuntu
+    Image ID:       docker.io/library/ubuntu@sha256:6e9f67fa63b0323e9a1e587fd71c561ba48a034504fb804fd26fd8800039835d
+    Port:           <none>
+    Host Port:      <none>
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 03 Dec 2019 09:53:08 +0530
+      Finished:     Tue, 03 Dec 2019 09:53:08 +0530
+    Ready:          False
+    Restart Count:  2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-85scf (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  default-token-85scf:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-85scf
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                From                         Message
+  ----     ------     ----               ----                         -------
+  Normal   Scheduled  46s                default-scheduler            Successfully assigned default/one-pod to kind-control-plane
+  Normal   Pulling    46s                kubelet, kind-control-plane  Pulling image "nginx"
+  Normal   Pulled     43s                kubelet, kind-control-plane  Successfully pulled image "nginx"
+  Normal   Created    42s                kubelet, kind-control-plane  Created container nginx-container
+  Normal   Started    42s                kubelet, kind-control-plane  Started container nginx-container
+  Normal   Pulling    26s (x3 over 42s)  kubelet, kind-control-plane  Pulling image "ubuntu"
+  Normal   Pulled     24s (x3 over 41s)  kubelet, kind-control-plane  Successfully pulled image "ubuntu"
+  Normal   Created    24s (x3 over 41s)  kubelet, kind-control-plane  Created container ubuntu-container
+  Normal   Started    24s (x3 over 41s)  kubelet, kind-control-plane  Started container ubuntu-container
+  Warning  BackOff    12s (x4 over 38s)  kubelet, kind-control-plane  Back-off restarting failed container
+

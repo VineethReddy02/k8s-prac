@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end
+spec:
+  # if we don't provide type by default it is taken as cluster ip
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    type: sample
+    app:  rs-demo-app

@@ -1,0 +1,10 @@
+apiVersion: 
+kind: PersistentVolumeClaim
+metadata: 
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+      requests:
+        storage: 500MI

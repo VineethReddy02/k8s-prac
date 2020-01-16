@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-app
+  labels:
+    app: rs-demo
+    type: rs-app
+spec:
+  template:
+    metadata:
+      name: rs-app
+      labels:
+        app: rs-demo-app
+        tier: rs-app
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+  replicas: 7
+  selector:
+    matchLabels:
+      app: rs-demo-app
+      tier: rs-app

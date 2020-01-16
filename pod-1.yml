@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-5
+  labels:
+    type: sample
+    app:  rs-demo-app
+spec:
+  containers:
+    - name: languages-execs
+      image: vineeth0297/languages
+      args: ["sleep","500"]
